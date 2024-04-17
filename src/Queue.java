@@ -1,14 +1,14 @@
 class Queue {
-    private final static int DEFSIZE = 16;
-    private int[] array;
-    private int size, head, tail;
+    protected final static int DEFSIZE = 16;
+    protected int[] array;
+    protected int size, head, tail;
 
     public Queue(int capacity) {
         array = new int[capacity];
         clear();
     }
 
-    public Queue(){
+    public Queue() {
         this(DEFSIZE);
     }
 
@@ -24,13 +24,13 @@ class Queue {
     }
 
     //Вернуть индекс следующего за данным элемента.
-    private int forward(int index) {
+    protected int forward(int index) {
         return ++index < array.length ? index : 0;
     }
 
     //Добавить число в очередь (в конец).
     public void push(int val) throws Exception {
-        if(++size > array.length)
+        if (++size > array.length)
             throw new Exception();
 
         array[tail = forward(tail)] = val;
@@ -47,7 +47,7 @@ class Queue {
 
     //Получить начало очереди (не удаляя его).
     public int front() throws Exception {
-        if(empty())
+        if (empty())
             throw new Exception();
 
         return array[head];
