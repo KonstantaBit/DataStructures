@@ -4,12 +4,27 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        TemplatedStack<Integer> stack1 = new TemplatedStack<Integer>(5);
-        stack1.push(10);
-        System.out.println(stack1.top());
-        TemplatedStack<Element> stack2 = new TemplatedStack<Element>(5);
-        stack2.push(new Element(10, "aaa"));
-        System.out.println(stack2.top().key);
-        System.out.println(stack2.top().value);
+        L1LinkedList<String> list =  new L1LinkedList<>();
+        list.append(new Node<>("12"));
+        list.append(new Node<>("23"));
+        list.append(new Node<>("34"));
+        list.append(new Node<>("45"));
+        list.append(new Node<>("56"));
+
+        list.removeFromIndex(0);
+
+        for (int i = 0; i < list.getSize(); ++i) {
+            System.out.println(list.getFromIndex(i));
+        }
+
+        System.out.println('-');
+
+        list.removeFromIndex(1);
+        list.pop();
+
+        for (int i = 0; i < list.getSize(); ++i) {
+            System.out.println(list.getFromIndex(i));
+        }
+
     }
 }
