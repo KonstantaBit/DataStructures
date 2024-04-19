@@ -4,16 +4,39 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        L1LinkedList<String> list =  new L1LinkedList<>();
-        list.append(new Node<>("12"));
-        list.append(new Node<>("23"));
-        list.append(new Node<>("34"));
-        list.append(new Node<>("45"));
-        list.append(new Node<>("56"));
+        try (FileReader fileReader = new FileReader("test_2_9.txt")) {
+            L1LinkedList<String> list = new L1LinkedList<>();
+            Scanner scanner = new Scanner(fileReader);
+            int appCounter = 0;
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if (line.startsWith("Run")) {
+                    list.append(new Node<>(line.substring(4)));
+                    System.out.println(line.substring(4));
+                    appCounter += 1;
+                } else if (line.startsWith("Alt")) {
+                    int tabCounter = 0;
+                    boolean isDelete = false;
 
-        list.removeFromIndex(list.find(list.getFromIndex(3))); // Показываю, что фунцкии работают
+                    for (String substring : line.split("\\+"))
+                        if (substring.equals("Tab"))
+                            tabCounter += 1;
+                        else if (substring.equals("Delete"))
+                            isDelete = true;
 
-        for (int i = 0; i < list.getSize(); ++i)
-            System.out.println(list.getFromIndex(i).value);
+                    int shift = list.getSize() - (tabCounter % appCounter) - 1;
+                    if (!isDelete || tabCounter != 0) {
+                        Node<String> temp = list.removeFromIndex(shift);
+                        if (!isDelete)
+                            list.append(temp);
+                        else
+                            appCounter--;
+                        System.out.println(temp.value);
+                    }
+                }
+            }
+        } catch (IOException exception) {
+            System.out.println(exception.toString());
+        }
     }
 }
