@@ -11,20 +11,9 @@ public class Main {
         list.append(new Node<>("45"));
         list.append(new Node<>("56"));
 
-        list.removeFromIndex(0);
+        list.removeFromIndex(list.find(list.getFromIndex(3))); // Показываю, что фунцкии работают
 
-        for (int i = 0; i < list.getSize(); ++i) {
-            System.out.println(list.getFromIndex(i));
-        }
-
-        System.out.println('-');
-
-        list.removeFromIndex(1);
-        list.pop();
-
-        for (int i = 0; i < list.getSize(); ++i) {
-            System.out.println(list.getFromIndex(i));
-        }
-
+        for (int i = 0; i < list.getSize(); ++i)
+            System.out.println(list.getFromIndex(i).value);
     }
 }
