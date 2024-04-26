@@ -1,31 +1,23 @@
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        L2List list = new L2List();
+        Human h1 = new Human("Абдул", "Евгеньевич", "Бобров", 40);
+        Human h2 = new Human("Абдул", "Евгеньевич", "Бобров", 41);
+        Human h3 = new Human("Иван", "Михайлович", "Короткий", 24);
+        Human h4 = new Human("Пирог", "Глупович", "Ягодов", 4);
+        Human h5 = new Human("Крекер", "-", "Хрустящий", 1);
+        LinkedList<Human> humans = new LinkedList<>();
 
-        for (int i = 0; i < 5; i++) {
-            list.insertFront(i);
-        }
+        humans.add(h1);
+        humans.add(h2);
+        humans.add(h3);
+        humans.add(h4);
+        humans.add(h5);
 
-        list.toFront();
-        for (int i = 0; i < 4; i++) {
-            System.out.println(list.after());
-            list.forward();
-        }
-        list.backward();
-        System.out.println(list.before());
-        System.out.println('-');
-        System.out.printf("%s %s\n", list.before, list.after);
-        System.out.println(list.eraseFront());
-        System.out.printf("%s %s\n", list.before, list.after);
-        System.out.println('-');
-        list.toFront();
-        for (int i = 0; i < 4; i++) {
-            System.out.println(list.after());
-            list.forward();
-        }
+        Collections.sort(humans);
+        for (Human human : humans)
+            System.out.printf("%s %s %s %s\n", human.first_name, human.second_name, human.last_name, human.age);
     }
 }
