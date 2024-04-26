@@ -1,11 +1,11 @@
 public class L1List {
-    private final static int DEFSIZE = 16;
-    private int[] array; //Массив элементов.
-    private int[] next; //Массив ссылок.
-    private int nilList; //"Нил" списка.
-    private int nilFree; //"Нил" свободного места.
-    private int before; //Индекс элемента до указателя.
-    private int after; //Индекс элемента после указателя.
+    protected final static int DEFSIZE = 16;
+    protected int[] array; //Массив элементов.
+    protected int[] next; //Массив ссылок.
+    protected int nilList; //"Нил" списка.
+    protected int nilFree; //"Нил" свободного места.
+    protected int before; //Индекс элемента до указателя.
+    protected int after; //Индекс элемента после указателя.
 
     public L1List(int capacity) {
         array = new int[capacity];
@@ -33,7 +33,7 @@ public class L1List {
     }
 
     //Захватить место.
-    private int mallocIndex() {
+    protected int mallocIndex() {
         int index = next[nilFree];
         link(nilFree, next[index]);
 
@@ -41,7 +41,7 @@ public class L1List {
     }
 
     //Освободить место.
-    private void freeIndex(int index) {
+    protected void freeIndex(int index) {
         link(index, next[nilFree]);
         link(nilFree, index);
     }
