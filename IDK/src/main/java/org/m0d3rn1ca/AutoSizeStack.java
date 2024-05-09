@@ -1,3 +1,5 @@
+package org.m0d3rn1ca;
+
 public class AutoSizeStack {
     private int[] data;
     private int head;

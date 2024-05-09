@@ -1,3 +1,5 @@
+package org.m0d3rn1ca;
+
 public class Human implements Comparable<Human> {
     public String first_name;
     public String last_name;

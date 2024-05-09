@@ -1,3 +1,5 @@
+package org.m0d3rn1ca;
+
 class Queue {
     protected final static int DEFSIZE = 16;
     protected int[] array;

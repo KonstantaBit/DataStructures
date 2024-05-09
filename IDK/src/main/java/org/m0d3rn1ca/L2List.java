@@ -1,3 +1,5 @@
+package org.m0d3rn1ca;
+
 public class L2List extends L1List {
     protected int[] prev; //Массив ссылок на предыдущий элемент
 

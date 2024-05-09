@@ -1,3 +1,5 @@
+package org.m0d3rn1ca;
+
 public class Node<T>{
     public T value;
     public Node<T> next;

@@ -1,3 +1,5 @@
+package org.m0d3rn1ca;
+
 public class L1LinkedList<T> {
     private Node<T> first, last; //Ссылки на первый и последний узлы.
     private int size;

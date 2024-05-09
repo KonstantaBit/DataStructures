@@ -1,39 +1,34 @@
-class Stack {
-    private static final int DEFSIZE = 16;
-    private int[] array;
-    private int head;
+package org.m0d3rn1ca;
 
-    public Stack(int capacity) {
-        array = new int[capacity];
+public class TemplatedStack <Type> {
+    private static final int DEFSIZE = 16;
+    private Object[] array;
+    private int head;
+    public TemplatedStack(int capacity) {
+        array = new Object[capacity];
         head = 0;
     }
-
-    public Stack() {
+    public TemplatedStack() {
         this(DEFSIZE);
     }
-
     //Пуст ли стек?
     public boolean empty() {
         return head == 0;
     }
-
     //Сделать стек пустым.
     public void clear() {
         head = 0;
     }
-
     //Добавить элемент на вершину стека.
-    public void push(int val) throws Exception {
+    public void push(Type val) throws Exception {
         array[head++] = val;
     }
-
     //Удалить элемент с вершины стека.
-    public int pop() throws Exception {
-        return array[--head];
+    public Type pop() throws Exception {
+        return (Type)array[--head];
     }
-
     //Получить вершину стека.
-    public int top() throws Exception {
-        return array[head - 1];
+    public Type top() throws Exception {
+        return (Type)array[head - 1];
     }
 }

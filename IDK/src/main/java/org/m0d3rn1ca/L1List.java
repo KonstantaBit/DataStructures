@@ -1,14 +1,16 @@
-public class L1ListString {
-    private final static int DEFSIZE = 16;
-    private String[] array; //Массив элементов.
-    private int[] next; //Массив ссылок.
-    private int nilList; //"Нил" списка.
-    private int nilFree; //"Нил" свободного места.
-    private int before; //Индекс элемента до указателя.
-    private int after; //Индекс элемента после указателя.
+package org.m0d3rn1ca;
 
-    public L1ListString(int capacity) {
-        array = new String[capacity];
+public class L1List {
+    protected final static int DEFSIZE = 16;
+    protected int[] array; //Массив элементов.
+    protected int[] next; //Массив ссылок.
+    protected int nilList; //"Нил" списка.
+    protected int nilFree; //"Нил" свободного места.
+    protected int before; //Индекс элемента до указателя.
+    protected int after; //Индекс элемента после указателя.
+
+    public L1List(int capacity) {
+        array = new int[capacity];
         next = new int[capacity + 2];
 
         nilList = capacity;
@@ -23,7 +25,7 @@ public class L1ListString {
         before = after = nilList;
     }
 
-    public L1ListString() {
+    public L1List() {
         this(DEFSIZE);
     }
 
@@ -33,7 +35,7 @@ public class L1ListString {
     }
 
     //Захватить место.
-    private int mallocIndex() {
+    protected int mallocIndex() {
         int index = next[nilFree];
         link(nilFree, next[index]);
 
@@ -41,7 +43,7 @@ public class L1ListString {
     }
 
     //Освободить место.
-    private void freeIndex(int index) {
+    protected void freeIndex(int index) {
         link(index, next[nilFree]);
         link(nilFree, index);
     }
@@ -83,12 +85,12 @@ public class L1ListString {
     }
 
     //Получить число за указателем.
-    public String after() throws Exception {
+    public int after() throws Exception {
         return array[after];
     }
 
     //Добавить число за указателем.
-    public void insert(String val) throws Exception {
+    public void insert(int val) throws Exception {
         int index = mallocIndex();
 
         link(before, index);
@@ -98,8 +100,8 @@ public class L1ListString {
     }
 
     //Удалить число за указателем.
-    public String erase() throws Exception {
-        String val = array[after];
+    public int erase() throws Exception {
+        int val = array[after];
         int index = after;
 
         after = next[index];

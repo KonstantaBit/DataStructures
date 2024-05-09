@@ -1,3 +1,5 @@
+package org.m0d3rn1ca;
+
 public class Deq extends Queue {
     public Deq(int capacity) {
         super(capacity);
